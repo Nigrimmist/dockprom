@@ -100,7 +100,12 @@ services:
       - monitor-net
     labels:
       org.label-schema.group: "monitoring"
-
+  renderer:
+    image: grafana/grafana-image-renderer:latest
+    ports:
+      - 8081
+    environment:
+      ENABLE_METRICS: 'true'
   pushgateway:
     image: prom/pushgateway:v1.3.1
     container_name: pushgateway
